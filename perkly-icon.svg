@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Perkly">
+  <rect width="512" height="512" rx="112" fill="#20453a"/>
+  <path d="M150 390V128h124c78 0 111 49 111 102S352 332 274 332H150" fill="none" stroke="#fffef9" stroke-width="42" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="382" cy="112" r="36" fill="#d7ef7a"/>
+</svg>
