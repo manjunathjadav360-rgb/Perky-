@@ -4,8 +4,8 @@ Perkly is an early-stage rewards and survey platform built as a mobile-first sta
 
 ## Current features
 
-- Responsive public landing page, activity cards and reward previews
-- Email/password signup and login through Supabase Auth
+- Responsive public landing page, activity cards, reward previews and mobile install metadata
+- Email/password signup, login and password recovery through Supabase Auth
 - Member dashboard with point ledger, task submissions, reward requests and history
 - Task submissions stored for admin review; points are credited after approval
 - Partner enquiry form with server-side validation and rate limiting
@@ -51,6 +51,7 @@ Confirm that exactly one intended account was updated. Then sign out and sign in
 - The website does not yet connect to an external survey provider, issue vouchers, pay cash, or run a payment gateway.
 - Points are not money. Only approved activities and properly funded partner offers should be represented as real earning opportunities.
 - Keep the Supabase database's row-level security enabled. Assign the admin role only through trusted server-side/admin tooling, never from client-side profile fields.
+- The Supabase security advisor reports leaked-password protection is disabled. Before a public launch, enable it under the project's Authentication/password security settings and review all remaining advisor findings.
 - Review legal, privacy, tax, consumer-protection and payment requirements before accepting real users or launching paid campaigns.
 
 ## Files
