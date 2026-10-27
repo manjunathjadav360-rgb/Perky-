@@ -33,6 +33,18 @@ After GitHub Pages provides the URL, open Supabase **Authentication → URL Conf
 
 The website uses the Supabase project URL and publishable key in `index.html`. A publishable key is intended for browser use; never put a service-role or secret key in this repository.
 
+### Set up the first admin account
+After creating your own account through the website, open **Supabase → SQL Editor** and run the statement below after replacing the placeholder with your own account email:
+
+```sql
+update auth.users
+set raw_app_meta_data = coalesce(raw_app_meta_data, '{}'::jsonb)
+  || jsonb_build_object('role', 'admin')
+where lower(email) = lower('YOUR_ACCOUNT_EMAIL');
+```
+
+Confirm that exactly one intended account was updated. Then sign out and sign in again so the new trusted app-metadata claim appears in your session. Never place admin roles in editable user metadata or let the browser assign its own role.
+
 ## Important limits
 
 - Reward items currently marked `sample` are display previews, not real offers.
