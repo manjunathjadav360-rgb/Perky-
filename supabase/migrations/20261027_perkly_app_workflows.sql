@@ -24,38 +24,6 @@ with check (
   )
 );
 
-drop policy if exists "Members can request reward redemption" on public.redemptions;
-create policy "Members can request reward redemption"
-on public.redemptions
-for insert to authenticated
-with check (
-  user_id = (select auth.uid())
-  and status = 'requested'
-  and exists (
-    select 1 from public.rewards r
-    where r.id = reward_id
-      and r.active = true
-      and r.points_cost = redemptions.points_cost
-  )
-  and (
-    coalesce((select sum(pl.amount) from public.points_ledger pl where pl.user_id = (select auth.uid())), 0)
-    - coalesce((select sum(rd.points_cost) from public.redemptions rd where rd.user_id = (select auth.uid()) and rd.status in ('requested','under_review','approved')), 0)
-  ) >= points_cost
-);
-
-drop policy if exists "Anyone can send partner requests" on public.partner_requests;
-create policy "Anyone can send partner requests"
-on public.partner_requests
-for insert to anon, authenticated
-with check (
-  status = 'new'
-  and char_length(trim(company_name)) between 2 and 120
-  and char_length(trim(contact_name)) between 2 and 100
-  and char_length(trim(contact_email)) between 5 and 254
-  and position('@' in contact_email) > 1
-  and char_length(trim(message)) between 10 and 3000
-);
-
 drop policy if exists "Admins can review task completions" on public.task_completions;
 create policy "Admins can review task completions"
 on public.task_completions
@@ -180,3 +148,9 @@ after update of status on public.redemptions
 for each row
 when (new.status in ('rejected', 'cancelled') and old.status in ('requested', 'under_review', 'approved'))
 execute function private.refund_rejected_redemption();
+
+-- Force reward debits and partner rate-limits through validated SECURITY DEFINER RPCs.
+drop policy if exists "Members can request reward redemption" on public.redemptions;
+drop policy if exists "Anyone can send partner requests" on public.partner_requests;
+revoke all on function public.submit_partner_request(text,text,text,text,text,text,text,text) from public;
+grant execute on function public.submit_partner_request(text,text,text,text,text,text,text,text) to anon, authenticated;
