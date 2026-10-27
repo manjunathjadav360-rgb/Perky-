@@ -7,7 +7,7 @@ Perkly is an early-stage rewards and survey platform built as a mobile-first sta
 - Responsive public landing page, activity cards, reward previews and mobile install metadata
 - Email/password signup, login and password recovery through Supabase Auth
 - Member dashboard with point ledger, task submissions, reward requests and history
-- Task submissions stored for admin review; points are credited after approval
+- Task submissions stored for admin review; points are credited after approval; daily check-in can be submitted once per UTC day while other demo activities are one-time
 - Partner enquiry form with server-side validation and rate limiting
 - Reward redemption through a transactional Supabase RPC
 - Admin review UI gated by the trusted `app_metadata.role = "admin"` claim
@@ -59,3 +59,4 @@ Confirm that exactly one intended account was updated. Then sign out and sign in
 - `index.html` — responsive UI and browser-side Supabase integration
 - `privacy.html` / `terms.html` — prototype privacy and usage notices; final legal review is still required before launch
 - `supabase/migrations/` — supplemental SQL changes for the connected project's existing schema
+- The migration folder does not yet include the original baseline schema migrations. Do not run `supabase db push` against a fresh project from this folder alone; the connected project already has its base schema and the files here document subsequent changes.
