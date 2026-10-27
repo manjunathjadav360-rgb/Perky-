@@ -1,6 +1,5 @@
 -- Require authenticated activity submissions to pass server-side validation and include a note.
 drop policy if exists "Members can request task review" on public.task_completions;
-revoke all on function public.submit_task_completion(text,text) from public, anon, authenticated;
 drop function if exists public.submit_task_completion(text,text);
 
 create or replace function public.submit_task_completion(
