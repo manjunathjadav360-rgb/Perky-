@@ -154,3 +154,5 @@ drop policy if exists "Members can request reward redemption" on public.redempti
 drop policy if exists "Anyone can send partner requests" on public.partner_requests;
 revoke all on function public.submit_partner_request(text,text,text,text,text,text,text,text) from public;
 grant execute on function public.submit_partner_request(text,text,text,text,text,text,text,text) to anon, authenticated;
+
+alter function public.submit_partner_request(text,text,text,text,text,text,text,text) set search_path = '';
