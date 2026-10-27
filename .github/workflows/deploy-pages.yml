@@ -24,7 +24,6 @@ jobs:
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
-        with:
 
       - name: Upload website files
         uses: actions/upload-pages-artifact@v3
