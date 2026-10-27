@@ -44,4 +44,5 @@ The website uses the Supabase project URL and publishable key in `index.html`. A
 ## Files
 
 - `index.html` — responsive UI and browser-side Supabase integration
-- `supabase/migrations/` — SQL changes used by this app
+- `privacy.html` / `terms.html` — prototype privacy and usage notices; final legal review is still required before launch
+- `supabase/migrations/` — supplemental SQL changes for the connected project's existing schema
