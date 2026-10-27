@@ -19,9 +19,12 @@ This repository is a static site: `index.html` is the entry point. No build comm
 
 ### GitHub Pages
 1. Open **Settings → Pages** for this repository.
-2. Under **Build and deployment**, choose **Deploy from a branch**.
-3. Select branch `main` and folder `/(root)`, then save.
-4. Wait for the deployment URL shown by GitHub.
+2. Under **Build and deployment → Source**, choose **GitHub Actions** and save. This one-time setting requires repository-owner access.
+3. Open the **Actions** tab, choose **Deploy Perkly to GitHub Pages**, tap **Run workflow**, and confirm.
+4. Wait for the workflow to finish. Its deployment job displays the published URL.
+5. If the Actions workflow is not available, make sure GitHub Actions are enabled for the repository.
+
+The connected GitHub integration cannot enable Pages itself because GitHub requires repository administration permission. The workflow is manual by design so it does not repeatedly fail before this one-time setting is configured.
 
 ### Supabase Auth URL configuration
 After GitHub Pages provides the URL, open Supabase **Authentication → URL Configuration**:
