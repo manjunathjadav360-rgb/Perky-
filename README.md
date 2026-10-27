@@ -1,0 +1,44 @@
+# Perkly
+
+Perkly is an early-stage rewards and survey platform built as a mobile-first static website with Supabase authentication and PostgreSQL-backed workflows.
+
+## Current features
+
+- Responsive public landing page, activity cards and reward previews
+- Email/password signup and login through Supabase Auth
+- Member dashboard with point ledger, task submissions, reward requests and history
+- Task submissions stored for admin review; points are credited after approval
+- Partner enquiry form with server-side validation and rate limiting
+- Reward redemption through a transactional Supabase RPC
+- Admin review UI gated by the trusted `app_metadata.role = "admin"` claim
+- Database refund entry when a redemption is rejected or cancelled
+
+## Free deployment
+
+This repository is a static site: `index.html` is the entry point. No build command is required.
+
+### GitHub Pages
+1. Open **Settings → Pages** for this repository.
+2. Under **Build and deployment**, choose **Deploy from a branch**.
+3. Select branch `main` and folder `/(root)`, then save.
+4. Wait for the deployment URL shown by GitHub.
+
+### Supabase Auth URL configuration
+After GitHub Pages provides the URL, open Supabase **Authentication → URL Configuration**:
+- Set **Site URL** to the exact deployed website URL.
+- Add that same URL to **Redirect URLs**.
+
+The website uses the Supabase project URL and publishable key in `index.html`. A publishable key is intended for browser use; never put a service-role or secret key in this repository.
+
+## Important limits
+
+- Reward items currently marked `sample` are display previews, not real offers.
+- The website does not yet connect to an external survey provider, issue vouchers, pay cash, or run a payment gateway.
+- Points are not money. Only approved activities and properly funded partner offers should be represented as real earning opportunities.
+- Keep the Supabase database's row-level security enabled. Assign the admin role only through trusted server-side/admin tooling, never from client-side profile fields.
+- Review legal, privacy, tax, consumer-protection and payment requirements before accepting real users or launching paid campaigns.
+
+## Files
+
+- `index.html` — responsive UI and browser-side Supabase integration
+- `supabase/migrations/` — SQL changes used by this app
