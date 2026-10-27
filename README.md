@@ -2,6 +2,8 @@
 
 Perkly is an early-stage rewards and survey platform built as a mobile-first static website with Supabase authentication and PostgreSQL-backed workflows.
 
+> **Deployment status:** The latest code is committed, but the public website is not confirmed live yet. GitHub requires the repository owner to enable **Settings → Pages → Source → GitHub Actions** once; then run the deployment workflow from the Actions tab.
+
 ## Current features
 
 - Responsive public landing page, activity cards, reward previews and mobile install metadata
