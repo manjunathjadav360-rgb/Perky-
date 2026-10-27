@@ -24,13 +24,6 @@ with check (
   )
 );
 
-drop policy if exists "Admins can review task completions" on public.task_completions;
-create policy "Admins can review task completions"
-on public.task_completions
-for update to authenticated
-using (((select auth.jwt()) -> 'app_metadata' ->> 'role') = 'admin')
-with check (((select auth.jwt()) -> 'app_metadata' ->> 'role') = 'admin');
-
 drop policy if exists "Admins can review partner requests" on public.partner_requests;
 create policy "Admins can review partner requests"
 on public.partner_requests
@@ -156,3 +149,5 @@ revoke all on function public.submit_partner_request(text,text,text,text,text,te
 grant execute on function public.submit_partner_request(text,text,text,text,text,text,text,text) to anon, authenticated;
 
 alter function public.submit_partner_request(text,text,text,text,text,text,text,text) set search_path = '';
+
+drop policy if exists "Admins can review task completions" on public.task_completions;
