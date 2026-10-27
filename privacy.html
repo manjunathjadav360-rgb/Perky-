@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f4ec">
+  <title>Privacy — Perkly</title>
+  <meta name="description" content="How Perkly handles account, activity and partner enquiry information.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--paper:#f6f4ec;--white:#fffef9;--ink:#172923;--green:#20453a;--lime:#d7ef7a;--muted:#6b746d;--line:#deded3}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "DM Sans",system-ui,sans-serif}
+    .wrap{width:min(760px,calc(100% - 32px));margin:auto}.top{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+    .brand{font-size:27px;font-weight:700;letter-spacing:-1.4px;color:var(--green);text-decoration:none}.brand i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--lime);margin-left:3px}
+    .back{color:var(--green);font-size:13px;font-weight:700;text-decoration:none}.content{padding:50px 0 70px}.eyebrow{display:inline-block;border-radius:99px;background:var(--lime);color:var(--green);padding:6px 12px;font-size:10px;letter-spacing:1px;font-weight:700}
+    h1{font-size:clamp(36px,7vw,54px);line-height:1.08;letter-spacing:-2px;margin:18px 0 12px}h2{font-size:21px;letter-spacing:-.5px;margin:30px 0 7px}p,li{color:#4f5c54;font-size:14px}ul{padding-left:22px}.note{background:var(--white);border:1px solid var(--line);border-radius:15px;padding:16px;font-size:13px;color:var(--muted)}footer{border-top:1px solid var(--line);padding:20px 0;color:var(--muted);font-size:12px}
+  </style>
+</head>
+<body>
+  <header class="wrap top"><a class="brand" href="./index.html">perkly<i></i></a><a class="back" href="./index.html">← Back to Perkly</a></header>
+  <main class="wrap content">
+    <span class="eyebrow">THE IMPORTANT DETAILS</span>
+    <h1>Privacy, in plain language.</h1>
+    <p>Last updated: 27 October 2026</p>
+    <div class="note"><strong>Early-stage notice:</strong> Perkly is still being tested. This page describes the intended handling of information in the current prototype; it is not a substitute for a final, legally reviewed privacy notice. Do not submit sensitive personal information.</div>
+
+    <h2>Information you may provide</h2>
+    <ul>
+      <li><strong>Account information:</strong> your email address and, if you provide one, a display name.</li>
+      <li><strong>Activity submissions:</strong> a short note explaining an activity you completed. Please do not include passwords, identity documents, bank details, health details or other sensitive information.</li>
+      <li><strong>Partner enquiries:</strong> organisation name, contact name, work email, optional website and the message you send.</li>
+      <li><strong>Product records:</strong> activity status, points ledger entries and reward request status needed to operate your account.</li>
+    </ul>
+
+    <h2>Why information is used</h2>
+    <p>Information is used to create and secure your account, display your activity history, review activity submissions, prevent duplicate requests, respond to partner enquiries and maintain accurate points records. Points are not cash and do not guarantee a payout.</p>
+
+    <h2>Where it is stored</h2>
+    <p>The current prototype uses Supabase for authentication and database services. Website code is stored in a public GitHub repository, so never put private user data, passwords or secret service keys in the source code. The website may load the DM Sans font from Google Fonts.</p>
+
+    <h2>Sharing and public visibility</h2>
+    <p>Perkly does not intend to publish members’ account details or private activity notes. Access is restricted through database permissions, but the prototype is not yet ready for large-scale public use. Do not use it for confidential or sensitive information.</p>
+
+    <h2>Retention and deletion</h2>
+    <p>Account and activity records may remain in the project database while the prototype is being tested. A self-service account deletion and a complete retention schedule have not yet been implemented. Do not rely on this prototype for information that must be immediately erased.</p>
+
+    <h2>Security and changes</h2>
+    <p>Perkly uses authentication and database access controls, and those controls are still being tested. The privacy notice may change as the product develops. Before public launch, the operator must publish a working privacy contact and a final notice that reflects the actual service.</p>
+
+    <h2>Contact</h2>
+    <p>A dedicated privacy contact has not yet been published. Perkly should not be treated as a production service until this contact and the final privacy process are in place.</p>
+  </main>
+  <footer><div class="wrap">Perkly · Small wins, good things.</div></footer>
+</body>
+</html>
