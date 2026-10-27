@@ -60,28 +60,29 @@ drop policy if exists "Admins can review task completions" on public.task_comple
 create policy "Admins can review task completions"
 on public.task_completions
 for update to authenticated
-using ((select coalesce(auth.jwt() -> 'app_metadata' ->> 'role', '')) = 'admin')
-with check ((select coalesce(auth.jwt() -> 'app_metadata' ->> 'role', '')) = 'admin');
+using (((select auth.jwt()) -> 'app_metadata' ->> 'role') = 'admin')
+with check (((select auth.jwt()) -> 'app_metadata' ->> 'role') = 'admin');
 
 drop policy if exists "Admins can review partner requests" on public.partner_requests;
 create policy "Admins can review partner requests"
 on public.partner_requests
 for update to authenticated
-using ((select coalesce(auth.jwt() -> 'app_metadata' ->> 'role', '')) = 'admin')
-with check ((select coalesce(auth.jwt() -> 'app_metadata' ->> 'role', '')) = 'admin');
+using (((select auth.jwt()) -> 'app_metadata' ->> 'role') = 'admin')
+with check (((select auth.jwt()) -> 'app_metadata' ->> 'role') = 'admin');
 
 drop policy if exists "Admins can view redemptions" on public.redemptions;
-create policy "Admins can view redemptions"
-on public.redemptions
-for select to authenticated
-using ((select coalesce(auth.jwt() -> 'app_metadata' ->> 'role', '')) = 'admin');
-
 drop policy if exists "Admins can review redemptions" on public.redemptions;
 create policy "Admins can review redemptions"
 on public.redemptions
 for update to authenticated
-using ((select coalesce(auth.jwt() -> 'app_metadata' ->> 'role', '')) = 'admin')
-with check ((select coalesce(auth.jwt() -> 'app_metadata' ->> 'role', '')) = 'admin');
+using (((select auth.jwt()) -> 'app_metadata' ->> 'role') = 'admin')
+with check (((select auth.jwt()) -> 'app_metadata' ->> 'role') = 'admin');
+
+drop policy if exists "Members can view own redemptions" on public.redemptions;
+create policy "Members and admins can view redemptions"
+on public.redemptions
+for select to authenticated
+using ((select auth.uid()) = user_id or ((select auth.jwt()) -> 'app_metadata' ->> 'role') = 'admin');
 
 create schema if not exists private;
 revoke all on schema private from public, anon, authenticated;
